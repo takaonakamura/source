@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 51c3f6fb647974976a18ee36eff7415b
+timeCreated: 1435477765
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - ballPrefab: {fileID: 159712, guid: 37acf462cba3f4087bbc488b47c47b39, type: 2}
+  - timer: {instanceID: 0}
+  - bombPrefab: {fileID: 179912, guid: d95288bcdb55b4f20a0a96bb20ad00a1, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
