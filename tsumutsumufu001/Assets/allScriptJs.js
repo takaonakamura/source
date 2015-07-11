@@ -23,10 +23,10 @@ private
 var isPlaying = false;
 
 public
-var timer: GameObject;
+var timer:GameObject;
 
 private
-var timerText: Text;
+var timerText:Text;
 
 private
 var timeLimit = 60;
@@ -37,20 +37,29 @@ var countTime = 5;
 private
 var isDragging=false;
 
+public 
+var Score:GameObject;
+
+private
+var scoreText:Text;
+
+private
+var currentScore=0;
+
 public
 var bombPrefab: GameObject;
 
 function Start () {
 	timerText = timer.GetComponent(Text);
-	CountDwn();
-	DropBall(155);
+	scoreText = Score.GetComponent(Text);
+	CountDown();
+	DropBall(55);
 }
 
-private
-function CountDonw(){
+private function CountDown(){
 	var count = countTime;
 	while(count > 0){
-		timeText.text = count.ToString();
+		timerText.text = count.ToString();
 		yield WaitForSeconds(1);
 		count -= 1;
 	}
@@ -79,7 +88,7 @@ function DropBall(count:int){
 	for (var i=0;i<count; i++){
 		var ball = Instantiate(ballPrefab);
 		ball.transform.position.x=Random.Range(-2.0,2.0);
-		ball.transform.position.y=-10;
+		ball.transform.position.y=7;
 		ball.transform.eulerAngles.z=Random.Range(-40,40);
 		var SpriteId: int = Random.Range(0,5);
 		ball.name="Ball"+SpriteId;
@@ -95,16 +104,17 @@ function Update () {
 	}
 
 	if(isPlaying){
-	if (Input.GetMouseButton(0) && firstBall == null){
-	OnDragStart();
-	} else if (Input.GetMouseButtonUp(0)){
-	OnDragEnd();
-	} else if (firstBall != null){
-	OnDragging();
+		if (Input.GetMouseButton(0) && firstBall == null){
+			OnDragStart();
+		} else if (Input.GetMouseButtonUp(0)){
+			OnDragEnd();
+		} else if (firstBall != null){
+			OnDragging();
+		}	
 	}
-	
-	}
+	scoreText.text = "Score:" + currentScore;
 }
+
 
 private
 function GetCurrentHitCollider(){
@@ -226,7 +236,7 @@ function OnDragEnd(){
 			ClearRemovables(0);
 		}else{
 			for (var j=0; j<length; j++){
-				var listedBall: GameObject = removableBallList[j];
+				var listedBall:GameObject = removableBallList[j];
 				ChangeColor(listedBall,1.0);
 				listedBall.name=listedBall.name.Substring(1,5);
 			}	
@@ -265,7 +275,7 @@ function OnDragging(){
 		if(colObj.name == currentName){
 			if (lastBall != colObj){
 				var dist = Vector2.Distance(lastBall.transform.position,colObj.transform.position);
-				if (dist <= 1.5){
+				if (dist <= 39.5){
 					PushToList(colObj);
 				}
 			}
@@ -274,6 +284,12 @@ function OnDragging(){
 }
 public function Reset(){
 	Application.LoadLevel("Main");
+}
+
+function CalculateBaseScore(num: int){
+	//var tempScore = 50* num(num+1)-300;
+	var tempScore: int = 50* num*(num+1)-300;
+	return tempScore;
 }
 
 

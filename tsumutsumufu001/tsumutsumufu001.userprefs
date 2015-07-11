@@ -1,8 +1,8 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/allScriptJs.js">
     <Files>
-      <File FileName="Assets/allScriptJs.js" Line="30" Column="1" />
+      <File FileName="Assets/allScriptJs.js" Line="115" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
